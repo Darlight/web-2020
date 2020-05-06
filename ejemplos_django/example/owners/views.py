@@ -32,3 +32,10 @@ class OwnerViewSet(viewsets.ModelViewSet):
     )
 
 
+ @action(detail=True, methods=['delete'])
+    def delete(self, request, pk=None):
+        pet = self.get_object()
+        pet.delete()
+        return Response({
+            'status': 'ok'
+        }) 
